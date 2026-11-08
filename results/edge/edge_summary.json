@@ -1,0 +1,67 @@
+{
+  "model_mb": {
+    "onnx_fp32": 11.1,
+    "onnx_int8": 2.9
+  },
+  "calibration": "20 defect-free metal_nut training images",
+  "threads": 4,
+  "note": "Laptop CPU limited to 4 threads; not a Raspberry Pi measurement. ms = feature extraction + memory search.",
+  "categories": {
+    "metal_nut": {
+      "onnx_fp32": {
+        "image_auroc": 0.9853,
+        "caught": "82/93",
+        "false_alarms": "0/22",
+        "ms_per_image": 21.4
+      },
+      "onnx_int8": {
+        "image_auroc": 0.9853,
+        "caught": "84/93",
+        "false_alarms": "0/22",
+        "ms_per_image": 14.3
+      }
+    },
+    "screw": {
+      "onnx_fp32": {
+        "image_auroc": 0.5645,
+        "caught": "57/119",
+        "false_alarms": "19/41",
+        "ms_per_image": 21.3
+      },
+      "onnx_int8": {
+        "image_auroc": 0.5677,
+        "caught": "57/119",
+        "false_alarms": "19/41",
+        "ms_per_image": 13.7
+      }
+    },
+    "carpet": {
+      "onnx_fp32": {
+        "image_auroc": 0.9759,
+        "caught": "84/89",
+        "false_alarms": "2/28",
+        "ms_per_image": 22.3
+      },
+      "onnx_int8": {
+        "image_auroc": 0.9723,
+        "caught": "84/89",
+        "false_alarms": "2/28",
+        "ms_per_image": 15.0
+      }
+    },
+    "capsule": {
+      "onnx_fp32": {
+        "image_auroc": 0.8408,
+        "caught": "27/109",
+        "false_alarms": "0/23",
+        "ms_per_image": 24.0
+      },
+      "onnx_int8": {
+        "image_auroc": 0.8377,
+        "caught": "28/109",
+        "false_alarms": "1/23",
+        "ms_per_image": 14.1
+      }
+    }
+  }
+}
