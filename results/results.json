@@ -1,0 +1,29 @@
+{
+  "category": "metal_nut",
+  "backbone": "resnet18",
+  "train_images_good_only": 20,
+  "defect_images_used_for_training": 0,
+  "image_auroc": 0.9853,
+  "pixel_auroc": 0.9807,
+  "image_auroc_by_defect": {
+    "bent": 1.0,
+    "color": 0.9607,
+    "flip": 1.0,
+    "scratch": 0.9783
+  },
+  "threshold_from_good_parts_only": 2.322,
+  "at_threshold": {
+    "defects_caught": "82/93",
+    "detection_rate": 0.8817,
+    "false_alarms_on_good": "0/22",
+    "accuracy": 0.9043
+  },
+  "memory_bank_patches": 1568,
+  "memory_bank_mb": 2.41,
+  "backbone_params_m": 2.78,
+  "train_seconds": 7.2,
+  "latency_ms_per_part_mean": 73.3,
+  "cpu_threads": 4,
+  "test_images": 115,
+  "hardware_note": "Latency measured on the machine that ran this script, not on a Raspberry Pi."
+}
