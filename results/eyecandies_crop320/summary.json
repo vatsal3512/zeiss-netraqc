@@ -1,0 +1,138 @@
+{
+  "dataset": "Eyecandies Lollipop, public test split",
+  "size": 320,
+  "crop": "100,480,30,480",
+  "n_train": 20,
+  "additivity_relative_error": {
+    "8-bit, sum of 4 lights": 0.43,
+    "8-bit, each light weighted": 0.357,
+    "8-bit, each light weighted + box": 0.285,
+    "linear sRGB, sum of 4 lights": 0.569,
+    "linear sRGB, each light weighted": 0.49,
+    "linear sRGB, each light weighted + box": 0.398
+  },
+  "test_samples": 50,
+  "defective": 16,
+  "single_shot_all_lights": {
+    "lights": [
+      "all-cam"
+    ],
+    "captures": 1,
+    "image_auroc": 0.5827,
+    "caught": "1/16",
+    "false_alarms": "0/34"
+  },
+  "single_shot_box": {
+    "lights": [
+      "box"
+    ],
+    "captures": 1,
+    "image_auroc": 0.5864,
+    "caught": "1/16",
+    "false_alarms": "0/34"
+  },
+  "four_single_lights": {
+    "lights": [
+      "cam1",
+      "cam2",
+      "cam3",
+      "cam4"
+    ],
+    "captures": 4,
+    "image_auroc": 0.7353,
+    "caught": "3/16",
+    "false_alarms": "1/34"
+  },
+  "best_subset": {
+    "lights": [
+      "cam3",
+      "cam4"
+    ],
+    "captures": 2,
+    "image_auroc": 0.7555,
+    "caught": "3/16",
+    "false_alarms": "0/34"
+  },
+  "fewest_within_0.01_of_best": {
+    "lights": [
+      "cam3",
+      "cam4"
+    ],
+    "captures": 2,
+    "image_auroc": 0.7555,
+    "caught": "3/16",
+    "false_alarms": "0/34"
+  },
+  "best_by_captures": {
+    "1": {
+      "lights": [
+        "cam4"
+      ],
+      "captures": 1,
+      "image_auroc": 0.7261,
+      "caught": "1/16",
+      "false_alarms": "0/34"
+    },
+    "2": {
+      "lights": [
+        "cam3",
+        "cam4"
+      ],
+      "captures": 2,
+      "image_auroc": 0.7555,
+      "caught": "3/16",
+      "false_alarms": "0/34"
+    },
+    "3": {
+      "lights": [
+        "cam2",
+        "cam3",
+        "cam4"
+      ],
+      "captures": 3,
+      "image_auroc": 0.7555,
+      "caught": "3/16",
+      "false_alarms": "0/34"
+    },
+    "4": {
+      "lights": [
+        "cam2",
+        "cam3",
+        "cam4",
+        "all-cam"
+      ],
+      "captures": 4,
+      "image_auroc": 0.7482,
+      "caught": "4/16",
+      "false_alarms": "0/34"
+    },
+    "5": {
+      "lights": [
+        "box",
+        "cam1",
+        "cam2",
+        "cam3",
+        "cam4"
+      ],
+      "captures": 5,
+      "image_auroc": 0.7206,
+      "caught": "3/16",
+      "false_alarms": "1/34"
+    },
+    "6": {
+      "lights": [
+        "box",
+        "cam1",
+        "cam2",
+        "cam3",
+        "cam4",
+        "all-cam"
+      ],
+      "captures": 6,
+      "image_auroc": 0.6985,
+      "caught": "4/16",
+      "false_alarms": "1/34"
+    }
+  },
+  "note": "Selection on the same 50 test samples is optimistic; the private test labels are not public."
+}

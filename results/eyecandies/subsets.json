@@ -1,0 +1,698 @@
+[
+ {
+  "lights": [
+   "box"
+  ],
+  "captures": 1,
+  "image_auroc": 0.5386,
+  "caught": "0/16",
+  "false_alarms": "0/34"
+ },
+ {
+  "lights": [
+   "cam1"
+  ],
+  "captures": 1,
+  "image_auroc": 0.5625,
+  "caught": "1/16",
+  "false_alarms": "0/34"
+ },
+ {
+  "lights": [
+   "cam2"
+  ],
+  "captures": 1,
+  "image_auroc": 0.5129,
+  "caught": "0/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam3"
+  ],
+  "captures": 1,
+  "image_auroc": 0.5129,
+  "caught": "0/16",
+  "false_alarms": "0/34"
+ },
+ {
+  "lights": [
+   "cam4"
+  ],
+  "captures": 1,
+  "image_auroc": 0.5735,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "all-cam"
+  ],
+  "captures": 1,
+  "image_auroc": 0.546,
+  "caught": "0/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1"
+  ],
+  "captures": 2,
+  "image_auroc": 0.5607,
+  "caught": "1/16",
+  "false_alarms": "0/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam2"
+  ],
+  "captures": 2,
+  "image_auroc": 0.4982,
+  "caught": "0/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam3"
+  ],
+  "captures": 2,
+  "image_auroc": 0.5349,
+  "caught": "0/16",
+  "false_alarms": "0/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam4"
+  ],
+  "captures": 2,
+  "image_auroc": 0.5643,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "all-cam"
+  ],
+  "captures": 2,
+  "image_auroc": 0.5662,
+  "caught": "0/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam2"
+  ],
+  "captures": 2,
+  "image_auroc": 0.5165,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam3"
+  ],
+  "captures": 2,
+  "image_auroc": 0.557,
+  "caught": "1/16",
+  "false_alarms": "0/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam4"
+  ],
+  "captures": 2,
+  "image_auroc": 0.5717,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "all-cam"
+  ],
+  "captures": 2,
+  "image_auroc": 0.5607,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam2",
+   "cam3"
+  ],
+  "captures": 2,
+  "image_auroc": 0.4963,
+  "caught": "0/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam2",
+   "cam4"
+  ],
+  "captures": 2,
+  "image_auroc": 0.5294,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam2",
+   "all-cam"
+  ],
+  "captures": 2,
+  "image_auroc": 0.5055,
+  "caught": "0/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam3",
+   "cam4"
+  ],
+  "captures": 2,
+  "image_auroc": 0.5607,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam3",
+   "all-cam"
+  ],
+  "captures": 2,
+  "image_auroc": 0.5551,
+  "caught": "0/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 2,
+  "image_auroc": 0.5496,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam2"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5074,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam3"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5533,
+  "caught": "1/16",
+  "false_alarms": "0/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam4"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5662,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "all-cam"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5643,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam2",
+   "cam3"
+  ],
+  "captures": 3,
+  "image_auroc": 0.489,
+  "caught": "0/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam2",
+   "cam4"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5276,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam2",
+   "all-cam"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5055,
+  "caught": "0/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam3",
+   "cam4"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5699,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam3",
+   "all-cam"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5607,
+  "caught": "0/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5478,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam2",
+   "cam3"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5037,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam2",
+   "cam4"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5368,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam2",
+   "all-cam"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5165,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam3",
+   "cam4"
+  ],
+  "captures": 3,
+  "image_auroc": 0.568,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam3",
+   "all-cam"
+  ],
+  "captures": 3,
+  "image_auroc": 0.557,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 3,
+  "image_auroc": 0.557,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam2",
+   "cam3",
+   "cam4"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5349,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam2",
+   "cam3",
+   "all-cam"
+  ],
+  "captures": 3,
+  "image_auroc": 0.4982,
+  "caught": "0/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam2",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5165,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam3",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 3,
+  "image_auroc": 0.5588,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam2",
+   "cam3"
+  ],
+  "captures": 4,
+  "image_auroc": 0.4982,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam2",
+   "cam4"
+  ],
+  "captures": 4,
+  "image_auroc": 0.5349,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam2",
+   "all-cam"
+  ],
+  "captures": 4,
+  "image_auroc": 0.5147,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam3",
+   "cam4"
+  ],
+  "captures": 4,
+  "image_auroc": 0.5625,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam3",
+   "all-cam"
+  ],
+  "captures": 4,
+  "image_auroc": 0.5588,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 4,
+  "image_auroc": 0.5551,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam2",
+   "cam3",
+   "cam4"
+  ],
+  "captures": 4,
+  "image_auroc": 0.5331,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam2",
+   "cam3",
+   "all-cam"
+  ],
+  "captures": 4,
+  "image_auroc": 0.5,
+  "caught": "0/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam2",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 4,
+  "image_auroc": 0.5147,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam3",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 4,
+  "image_auroc": 0.557,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam2",
+   "cam3",
+   "cam4"
+  ],
+  "captures": 4,
+  "image_auroc": 0.5331,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam2",
+   "cam3",
+   "all-cam"
+  ],
+  "captures": 4,
+  "image_auroc": 0.5092,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam2",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 4,
+  "image_auroc": 0.5276,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam3",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 4,
+  "image_auroc": 0.5551,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam2",
+   "cam3",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 4,
+  "image_auroc": 0.5202,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam2",
+   "cam3",
+   "cam4"
+  ],
+  "captures": 5,
+  "image_auroc": 0.5312,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam2",
+   "cam3",
+   "all-cam"
+  ],
+  "captures": 5,
+  "image_auroc": 0.5074,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam2",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 5,
+  "image_auroc": 0.5257,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam3",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 5,
+  "image_auroc": 0.5533,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam2",
+   "cam3",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 5,
+  "image_auroc": 0.5184,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "cam1",
+   "cam2",
+   "cam3",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 5,
+  "image_auroc": 0.5239,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ },
+ {
+  "lights": [
+   "box",
+   "cam1",
+   "cam2",
+   "cam3",
+   "cam4",
+   "all-cam"
+  ],
+  "captures": 6,
+  "image_auroc": 0.5221,
+  "caught": "1/16",
+  "false_alarms": "1/34"
+ }
+]
