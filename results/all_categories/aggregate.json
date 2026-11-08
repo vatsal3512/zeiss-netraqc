@@ -1,0 +1,9 @@
+{
+  "mean_image_auroc": 0.9215,
+  "mean_pixel_auroc": 0.9624,
+  "mean_image_auroc_objects": 0.9113,
+  "mean_image_auroc_textures": 0.9418,
+  "caught": "923/1258",
+  "false_alarms": "53/467",
+  "note": "Laptop CPU, 4 threads. One fixed design and threshold rule for all categories; no per-category tuning."
+}

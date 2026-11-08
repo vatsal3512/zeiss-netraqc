@@ -1,0 +1,587 @@
+[
+ {
+  "file": "crack/000.png",
+  "defect": "crack",
+  "score": 3.006403923034668
+ },
+ {
+  "file": "crack/001.png",
+  "defect": "crack",
+  "score": 3.024224042892456
+ },
+ {
+  "file": "crack/002.png",
+  "defect": "crack",
+  "score": 3.193169116973877
+ },
+ {
+  "file": "crack/003.png",
+  "defect": "crack",
+  "score": 3.042924404144287
+ },
+ {
+  "file": "crack/004.png",
+  "defect": "crack",
+  "score": 2.9932048320770264
+ },
+ {
+  "file": "crack/005.png",
+  "defect": "crack",
+  "score": 2.5954179763793945
+ },
+ {
+  "file": "crack/006.png",
+  "defect": "crack",
+  "score": 3.281100034713745
+ },
+ {
+  "file": "crack/007.png",
+  "defect": "crack",
+  "score": 3.0648655891418457
+ },
+ {
+  "file": "crack/008.png",
+  "defect": "crack",
+  "score": 2.8517069816589355
+ },
+ {
+  "file": "crack/009.png",
+  "defect": "crack",
+  "score": 2.8553202152252197
+ },
+ {
+  "file": "crack/010.png",
+  "defect": "crack",
+  "score": 3.7605395317077637
+ },
+ {
+  "file": "crack/011.png",
+  "defect": "crack",
+  "score": 2.558962345123291
+ },
+ {
+  "file": "crack/012.png",
+  "defect": "crack",
+  "score": 3.01409649848938
+ },
+ {
+  "file": "crack/013.png",
+  "defect": "crack",
+  "score": 2.739492177963257
+ },
+ {
+  "file": "crack/014.png",
+  "defect": "crack",
+  "score": 3.120422601699829
+ },
+ {
+  "file": "crack/015.png",
+  "defect": "crack",
+  "score": 2.106696605682373
+ },
+ {
+  "file": "crack/016.png",
+  "defect": "crack",
+  "score": 2.9116203784942627
+ },
+ {
+  "file": "glue_strip/000.png",
+  "defect": "glue_strip",
+  "score": 2.841127634048462
+ },
+ {
+  "file": "glue_strip/001.png",
+  "defect": "glue_strip",
+  "score": 2.7506933212280273
+ },
+ {
+  "file": "glue_strip/002.png",
+  "defect": "glue_strip",
+  "score": 2.0663344860076904
+ },
+ {
+  "file": "glue_strip/003.png",
+  "defect": "glue_strip",
+  "score": 2.228973865509033
+ },
+ {
+  "file": "glue_strip/004.png",
+  "defect": "glue_strip",
+  "score": 3.2351701259613037
+ },
+ {
+  "file": "glue_strip/005.png",
+  "defect": "glue_strip",
+  "score": 2.3280527591705322
+ },
+ {
+  "file": "glue_strip/006.png",
+  "defect": "glue_strip",
+  "score": 2.381649971008301
+ },
+ {
+  "file": "glue_strip/007.png",
+  "defect": "glue_strip",
+  "score": 2.223503589630127
+ },
+ {
+  "file": "glue_strip/008.png",
+  "defect": "glue_strip",
+  "score": 2.871799945831299
+ },
+ {
+  "file": "glue_strip/009.png",
+  "defect": "glue_strip",
+  "score": 2.929936170578003
+ },
+ {
+  "file": "glue_strip/010.png",
+  "defect": "glue_strip",
+  "score": 2.2690818309783936
+ },
+ {
+  "file": "glue_strip/011.png",
+  "defect": "glue_strip",
+  "score": 2.343449831008911
+ },
+ {
+  "file": "glue_strip/012.png",
+  "defect": "glue_strip",
+  "score": 2.7284493446350098
+ },
+ {
+  "file": "glue_strip/013.png",
+  "defect": "glue_strip",
+  "score": 2.4434571266174316
+ },
+ {
+  "file": "glue_strip/014.png",
+  "defect": "glue_strip",
+  "score": 2.3463099002838135
+ },
+ {
+  "file": "glue_strip/015.png",
+  "defect": "glue_strip",
+  "score": 2.7353978157043457
+ },
+ {
+  "file": "glue_strip/016.png",
+  "defect": "glue_strip",
+  "score": 2.167287588119507
+ },
+ {
+  "file": "glue_strip/017.png",
+  "defect": "glue_strip",
+  "score": 2.8582818508148193
+ },
+ {
+  "file": "good/000.png",
+  "defect": "good",
+  "score": 1.5292309522628784
+ },
+ {
+  "file": "good/001.png",
+  "defect": "good",
+  "score": 1.4698578119277954
+ },
+ {
+  "file": "good/002.png",
+  "defect": "good",
+  "score": 1.6489670276641846
+ },
+ {
+  "file": "good/003.png",
+  "defect": "good",
+  "score": 1.5094656944274902
+ },
+ {
+  "file": "good/004.png",
+  "defect": "good",
+  "score": 1.5104211568832397
+ },
+ {
+  "file": "good/005.png",
+  "defect": "good",
+  "score": 1.5523878335952759
+ },
+ {
+  "file": "good/006.png",
+  "defect": "good",
+  "score": 1.703233242034912
+ },
+ {
+  "file": "good/007.png",
+  "defect": "good",
+  "score": 1.5254015922546387
+ },
+ {
+  "file": "good/008.png",
+  "defect": "good",
+  "score": 1.7286670207977295
+ },
+ {
+  "file": "good/009.png",
+  "defect": "good",
+  "score": 1.4722329378128052
+ },
+ {
+  "file": "good/010.png",
+  "defect": "good",
+  "score": 1.4449869394302368
+ },
+ {
+  "file": "good/011.png",
+  "defect": "good",
+  "score": 1.5605254173278809
+ },
+ {
+  "file": "good/012.png",
+  "defect": "good",
+  "score": 1.6255338191986084
+ },
+ {
+  "file": "good/013.png",
+  "defect": "good",
+  "score": 1.5383741855621338
+ },
+ {
+  "file": "good/014.png",
+  "defect": "good",
+  "score": 1.6091270446777344
+ },
+ {
+  "file": "good/015.png",
+  "defect": "good",
+  "score": 1.5359318256378174
+ },
+ {
+  "file": "good/016.png",
+  "defect": "good",
+  "score": 1.5619442462921143
+ },
+ {
+  "file": "good/017.png",
+  "defect": "good",
+  "score": 1.7310715913772583
+ },
+ {
+  "file": "good/018.png",
+  "defect": "good",
+  "score": 1.6381944417953491
+ },
+ {
+  "file": "good/019.png",
+  "defect": "good",
+  "score": 1.568481683731079
+ },
+ {
+  "file": "good/020.png",
+  "defect": "good",
+  "score": 1.661373257637024
+ },
+ {
+  "file": "good/021.png",
+  "defect": "good",
+  "score": 1.444669246673584
+ },
+ {
+  "file": "good/022.png",
+  "defect": "good",
+  "score": 1.5127290487289429
+ },
+ {
+  "file": "good/023.png",
+  "defect": "good",
+  "score": 1.5544331073760986
+ },
+ {
+  "file": "good/024.png",
+  "defect": "good",
+  "score": 1.5847519636154175
+ },
+ {
+  "file": "good/025.png",
+  "defect": "good",
+  "score": 1.6806378364562988
+ },
+ {
+  "file": "good/026.png",
+  "defect": "good",
+  "score": 1.5625298023223877
+ },
+ {
+  "file": "good/027.png",
+  "defect": "good",
+  "score": 1.5486221313476562
+ },
+ {
+  "file": "good/028.png",
+  "defect": "good",
+  "score": 1.5382946729660034
+ },
+ {
+  "file": "good/029.png",
+  "defect": "good",
+  "score": 1.65174400806427
+ },
+ {
+  "file": "good/030.png",
+  "defect": "good",
+  "score": 1.600110650062561
+ },
+ {
+  "file": "good/031.png",
+  "defect": "good",
+  "score": 1.6168687343597412
+ },
+ {
+  "file": "good/032.png",
+  "defect": "good",
+  "score": 1.57826566696167
+ },
+ {
+  "file": "gray_stroke/000.png",
+  "defect": "gray_stroke",
+  "score": 1.792697787284851
+ },
+ {
+  "file": "gray_stroke/001.png",
+  "defect": "gray_stroke",
+  "score": 1.9977260828018188
+ },
+ {
+  "file": "gray_stroke/002.png",
+  "defect": "gray_stroke",
+  "score": 1.8532873392105103
+ },
+ {
+  "file": "gray_stroke/003.png",
+  "defect": "gray_stroke",
+  "score": 1.8163580894470215
+ },
+ {
+  "file": "gray_stroke/004.png",
+  "defect": "gray_stroke",
+  "score": 1.8754968643188477
+ },
+ {
+  "file": "gray_stroke/005.png",
+  "defect": "gray_stroke",
+  "score": 1.830798625946045
+ },
+ {
+  "file": "gray_stroke/006.png",
+  "defect": "gray_stroke",
+  "score": 2.0551249980926514
+ },
+ {
+  "file": "gray_stroke/007.png",
+  "defect": "gray_stroke",
+  "score": 1.920795202255249
+ },
+ {
+  "file": "gray_stroke/008.png",
+  "defect": "gray_stroke",
+  "score": 2.0653297901153564
+ },
+ {
+  "file": "gray_stroke/009.png",
+  "defect": "gray_stroke",
+  "score": 1.883636713027954
+ },
+ {
+  "file": "gray_stroke/010.png",
+  "defect": "gray_stroke",
+  "score": 1.7551896572113037
+ },
+ {
+  "file": "gray_stroke/011.png",
+  "defect": "gray_stroke",
+  "score": 2.157831907272339
+ },
+ {
+  "file": "gray_stroke/012.png",
+  "defect": "gray_stroke",
+  "score": 1.709537148475647
+ },
+ {
+  "file": "gray_stroke/013.png",
+  "defect": "gray_stroke",
+  "score": 2.137004852294922
+ },
+ {
+  "file": "gray_stroke/014.png",
+  "defect": "gray_stroke",
+  "score": 1.892133116722107
+ },
+ {
+  "file": "gray_stroke/015.png",
+  "defect": "gray_stroke",
+  "score": 1.992339015007019
+ },
+ {
+  "file": "oil/000.png",
+  "defect": "oil",
+  "score": 2.2712042331695557
+ },
+ {
+  "file": "oil/001.png",
+  "defect": "oil",
+  "score": 2.5124635696411133
+ },
+ {
+  "file": "oil/002.png",
+  "defect": "oil",
+  "score": 2.2270970344543457
+ },
+ {
+  "file": "oil/003.png",
+  "defect": "oil",
+  "score": 2.376650810241699
+ },
+ {
+  "file": "oil/004.png",
+  "defect": "oil",
+  "score": 2.1176373958587646
+ },
+ {
+  "file": "oil/005.png",
+  "defect": "oil",
+  "score": 2.290355920791626
+ },
+ {
+  "file": "oil/006.png",
+  "defect": "oil",
+  "score": 2.2186014652252197
+ },
+ {
+  "file": "oil/007.png",
+  "defect": "oil",
+  "score": 2.2257790565490723
+ },
+ {
+  "file": "oil/008.png",
+  "defect": "oil",
+  "score": 2.273726224899292
+ },
+ {
+  "file": "oil/009.png",
+  "defect": "oil",
+  "score": 2.1865122318267822
+ },
+ {
+  "file": "oil/010.png",
+  "defect": "oil",
+  "score": 2.4369378089904785
+ },
+ {
+  "file": "oil/011.png",
+  "defect": "oil",
+  "score": 2.424334764480591
+ },
+ {
+  "file": "oil/012.png",
+  "defect": "oil",
+  "score": 2.438741445541382
+ },
+ {
+  "file": "oil/013.png",
+  "defect": "oil",
+  "score": 2.315174102783203
+ },
+ {
+  "file": "oil/014.png",
+  "defect": "oil",
+  "score": 2.1320338249206543
+ },
+ {
+  "file": "oil/015.png",
+  "defect": "oil",
+  "score": 2.2946953773498535
+ },
+ {
+  "file": "oil/016.png",
+  "defect": "oil",
+  "score": 2.0242767333984375
+ },
+ {
+  "file": "oil/017.png",
+  "defect": "oil",
+  "score": 2.0783607959747314
+ },
+ {
+  "file": "rough/000.png",
+  "defect": "rough",
+  "score": 1.7583379745483398
+ },
+ {
+  "file": "rough/001.png",
+  "defect": "rough",
+  "score": 2.02978515625
+ },
+ {
+  "file": "rough/002.png",
+  "defect": "rough",
+  "score": 1.872662901878357
+ },
+ {
+  "file": "rough/003.png",
+  "defect": "rough",
+  "score": 1.8249706029891968
+ },
+ {
+  "file": "rough/004.png",
+  "defect": "rough",
+  "score": 1.8413035869598389
+ },
+ {
+  "file": "rough/005.png",
+  "defect": "rough",
+  "score": 1.8845417499542236
+ },
+ {
+  "file": "rough/006.png",
+  "defect": "rough",
+  "score": 1.7978590726852417
+ },
+ {
+  "file": "rough/007.png",
+  "defect": "rough",
+  "score": 1.8403593301773071
+ },
+ {
+  "file": "rough/008.png",
+  "defect": "rough",
+  "score": 2.054957389831543
+ },
+ {
+  "file": "rough/009.png",
+  "defect": "rough",
+  "score": 2.235922336578369
+ },
+ {
+  "file": "rough/010.png",
+  "defect": "rough",
+  "score": 2.13022518157959
+ },
+ {
+  "file": "rough/011.png",
+  "defect": "rough",
+  "score": 2.040404796600342
+ },
+ {
+  "file": "rough/012.png",
+  "defect": "rough",
+  "score": 2.017428398132324
+ },
+ {
+  "file": "rough/013.png",
+  "defect": "rough",
+  "score": 2.1775004863739014
+ },
+ {
+  "file": "rough/014.png",
+  "defect": "rough",
+  "score": 1.844422698020935
+ }
+]
