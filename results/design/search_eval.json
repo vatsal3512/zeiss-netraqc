@@ -1,0 +1,70 @@
+{
+  "full_grid_hv": 1.0,
+  "seeds": 20,
+  "results": {
+    "random@20": {
+      "mean": 0.924,
+      "sd": 0.057
+    },
+    "tpe@20": {
+      "mean": 0.948,
+      "sd": 0.057
+    },
+    "nsga2@20": {
+      "mean": 0.876,
+      "sd": 0.121
+    },
+    "random@40": {
+      "mean": 0.96,
+      "sd": 0.036
+    },
+    "tpe@40": {
+      "mean": 0.988,
+      "sd": 0.005
+    },
+    "nsga2@40": {
+      "mean": 0.931,
+      "sd": 0.082
+    },
+    "random@60": {
+      "mean": 0.974,
+      "sd": 0.027
+    },
+    "tpe@60": {
+      "mean": 0.993,
+      "sd": 0.005
+    },
+    "nsga2@60": {
+      "mean": 0.953,
+      "sd": 0.071
+    }
+  },
+  "two_fold": [
+    {
+      "select_on": "val_auroc",
+      "report_on": "test_auroc",
+      "backbone": "resnet18",
+      "size": 160,
+      "layers": "l2",
+      "coreset": 0.05,
+      "n_train": 20,
+      "selected_split_auroc": 0.9919,
+      "other_split_auroc": 0.9773,
+      "latency_ms": 39.4,
+      "footprint_mb": 2.94
+    },
+    {
+      "select_on": "test_auroc",
+      "report_on": "val_auroc",
+      "backbone": "resnet18",
+      "size": 256,
+      "layers": "l2",
+      "coreset": 0.01,
+      "n_train": 20,
+      "selected_split_auroc": 0.9905,
+      "other_split_auroc": 0.9657,
+      "latency_ms": 57.7,
+      "footprint_mb": 2.84
+    }
+  ]
+}
