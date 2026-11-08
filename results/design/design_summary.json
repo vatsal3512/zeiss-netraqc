@@ -1,0 +1,59 @@
+{
+  "category": "metal_nut",
+  "grid_size": 300,
+  "val_images": 56,
+  "heldout_images": 59,
+  "true_pareto_designs": 28,
+  "best_val_auroc": 1.0,
+  "selection_rule": "smallest footprint on the validation Pareto front within 0.01 of the best validation AUROC",
+  "frugal_pick": {
+    "backbone": "resnet18",
+    "size": 160,
+    "layers": "l2",
+    "coreset": 0.05,
+    "n_train": 20,
+    "val_auroc": 0.9919,
+    "test_auroc": 0.9773,
+    "latency_ms": 39.4,
+    "footprint_mb": 2.94,
+    "bank_mb": 0.2
+  },
+  "fastest_within_0.01": {
+    "backbone": "resnet18",
+    "size": 160,
+    "layers": "l2",
+    "coreset": 0.05,
+    "n_train": 20,
+    "val_auroc": 0.9919,
+    "test_auroc": 0.9773,
+    "latency_ms": 39.4,
+    "footprint_mb": 2.94,
+    "bank_mb": 0.2
+  },
+  "current_default": {
+    "backbone": "resnet18",
+    "size": 224,
+    "layers": "l2+l3",
+    "coreset": 0.1,
+    "n_train": 20,
+    "val_auroc": 0.9778,
+    "test_auroc": 0.9924,
+    "latency_ms": 66.8,
+    "footprint_mb": 13.54,
+    "bank_mb": 2.41
+  },
+  "heavy_reference": {
+    "backbone": "wide_resnet50_2",
+    "size": 256,
+    "layers": "l2+l3",
+    "coreset": 0.25,
+    "n_train": 20,
+    "val_auroc": 0.9919,
+    "test_auroc": 0.9924,
+    "latency_ms": 361.9,
+    "footprint_mb": 130.91,
+    "bank_mb": 31.46
+  },
+  "cpu_threads": 4,
+  "note": "Latency measured on the laptop CPU that ran this script, not on a Raspberry Pi."
+}
