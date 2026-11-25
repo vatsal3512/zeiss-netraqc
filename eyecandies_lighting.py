@@ -56,6 +56,14 @@ def additivity(test_dir, n=10):
     return out
 
 
+def auto_crop(train_dir, n, pad=16):
+    """box where the all-lights training images change between samples (no test images used)"""
+    ims = np.stack([np.asarray(Image.open(train_dir / f"{i:03d}_image_5.png").convert("L"), dtype=np.float32) for i in range(n)])
+    ys, xs = np.where(ims.std(0) > 20)
+    h, w = ims.shape[1:]
+    return (int(max(0, ys.min() - pad)), int(min(h, ys.max() + pad)), int(max(0, xs.min() - pad)), int(min(w, xs.max() + pad)))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default="../eyecandies_data/Eyecandies/Lollipop")
@@ -65,6 +73,7 @@ def main():
     ap.add_argument("--coreset", type=float, default=0.1)
     ap.add_argument("--threads", type=int, default=4)
     ap.add_argument("--crop", default="", help="top,bottom,left,right in source pixels")
+    ap.add_argument("--auto-crop", action="store_true", help="crop to where the training images vary")
     a = ap.parse_args()
     global CROP
     CROP = tuple(int(v) for v in a.crop.split(",")) if a.crop else None
@@ -72,6 +81,9 @@ def main():
     root, out = Path(a.root), Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     test_dir, train_dir = root / "test_public" / "data", root / "train" / "data"
+    if a.auto_crop:
+        CROP = auto_crop(train_dir, a.n_train)
+        a.crop = ",".join(map(str, CROP))
 
     res = {"dataset": f"Eyecandies {root.name}, public test split", "size": a.size, "crop": a.crop or None, "n_train": a.n_train, "additivity_relative_error": additivity(test_dir)}
     print(json.dumps(res["additivity_relative_error"], indent=1), flush=True)
