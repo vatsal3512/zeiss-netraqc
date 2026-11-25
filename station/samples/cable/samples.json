@@ -1,0 +1,32 @@
+[
+ {
+  "file": "good_000.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/000.png"
+ },
+ {
+  "file": "good_001.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/001.png"
+ },
+ {
+  "file": "good_002.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/002.png"
+ },
+ {
+  "file": "bent_wire_000.jpg",
+  "label": "bent_wire",
+  "source": "MVTec AD test/bent_wire/000.png"
+ },
+ {
+  "file": "cable_swap_000.jpg",
+  "label": "cable_swap",
+  "source": "MVTec AD test/cable_swap/000.png"
+ },
+ {
+  "file": "combined_000.jpg",
+  "label": "combined",
+  "source": "MVTec AD test/combined/000.png"
+ }
+]

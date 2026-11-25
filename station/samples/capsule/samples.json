@@ -1,0 +1,32 @@
+[
+ {
+  "file": "good_000.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/000.png"
+ },
+ {
+  "file": "good_001.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/001.png"
+ },
+ {
+  "file": "good_002.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/002.png"
+ },
+ {
+  "file": "crack_000.jpg",
+  "label": "crack",
+  "source": "MVTec AD test/crack/000.png"
+ },
+ {
+  "file": "faulty_imprint_000.jpg",
+  "label": "faulty_imprint",
+  "source": "MVTec AD test/faulty_imprint/000.png"
+ },
+ {
+  "file": "poke_000.jpg",
+  "label": "poke",
+  "source": "MVTec AD test/poke/000.png"
+ }
+]

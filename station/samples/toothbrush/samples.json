@@ -1,0 +1,22 @@
+[
+ {
+  "file": "good_000.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/000.png"
+ },
+ {
+  "file": "good_001.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/001.png"
+ },
+ {
+  "file": "good_002.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/002.png"
+ },
+ {
+  "file": "defective_000.jpg",
+  "label": "defective",
+  "source": "MVTec AD test/defective/000.png"
+ }
+]

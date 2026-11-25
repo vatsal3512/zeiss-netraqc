@@ -1,0 +1,32 @@
+[
+ {
+  "file": "good_000.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/000.png"
+ },
+ {
+  "file": "good_001.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/001.png"
+ },
+ {
+  "file": "good_002.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/002.png"
+ },
+ {
+  "file": "manipulated_front_000.jpg",
+  "label": "manipulated_front",
+  "source": "MVTec AD test/manipulated_front/000.png"
+ },
+ {
+  "file": "scratch_head_000.jpg",
+  "label": "scratch_head",
+  "source": "MVTec AD test/scratch_head/000.png"
+ },
+ {
+  "file": "scratch_neck_000.jpg",
+  "label": "scratch_neck",
+  "source": "MVTec AD test/scratch_neck/000.png"
+ }
+]

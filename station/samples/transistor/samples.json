@@ -1,0 +1,32 @@
+[
+ {
+  "file": "good_000.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/000.png"
+ },
+ {
+  "file": "good_001.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/001.png"
+ },
+ {
+  "file": "good_002.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/002.png"
+ },
+ {
+  "file": "bent_lead_000.jpg",
+  "label": "bent_lead",
+  "source": "MVTec AD test/bent_lead/000.png"
+ },
+ {
+  "file": "cut_lead_000.jpg",
+  "label": "cut_lead",
+  "source": "MVTec AD test/cut_lead/000.png"
+ },
+ {
+  "file": "damaged_case_000.jpg",
+  "label": "damaged_case",
+  "source": "MVTec AD test/damaged_case/000.png"
+ }
+]

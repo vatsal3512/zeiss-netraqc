@@ -1,0 +1,32 @@
+[
+ {
+  "file": "good_000.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/000.png"
+ },
+ {
+  "file": "good_001.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/001.png"
+ },
+ {
+  "file": "good_002.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/002.png"
+ },
+ {
+  "file": "crack_000.jpg",
+  "label": "crack",
+  "source": "MVTec AD test/crack/000.png"
+ },
+ {
+  "file": "glue_strip_000.jpg",
+  "label": "glue_strip",
+  "source": "MVTec AD test/glue_strip/000.png"
+ },
+ {
+  "file": "gray_stroke_000.jpg",
+  "label": "gray_stroke",
+  "source": "MVTec AD test/gray_stroke/000.png"
+ }
+]

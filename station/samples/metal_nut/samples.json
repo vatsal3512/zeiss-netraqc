@@ -1,0 +1,32 @@
+[
+ {
+  "file": "good_000.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/000.png"
+ },
+ {
+  "file": "good_001.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/001.png"
+ },
+ {
+  "file": "good_002.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/002.png"
+ },
+ {
+  "file": "bent_000.jpg",
+  "label": "bent",
+  "source": "MVTec AD test/bent/000.png"
+ },
+ {
+  "file": "color_000.jpg",
+  "label": "color",
+  "source": "MVTec AD test/color/000.png"
+ },
+ {
+  "file": "flip_000.jpg",
+  "label": "flip",
+  "source": "MVTec AD test/flip/000.png"
+ }
+]

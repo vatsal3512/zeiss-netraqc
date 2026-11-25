@@ -1,0 +1,32 @@
+[
+ {
+  "file": "good_000.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/000.png"
+ },
+ {
+  "file": "good_001.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/001.png"
+ },
+ {
+  "file": "good_002.jpg",
+  "label": "good",
+  "source": "MVTec AD test/good/002.png"
+ },
+ {
+  "file": "crack_000.jpg",
+  "label": "crack",
+  "source": "MVTec AD test/crack/000.png"
+ },
+ {
+  "file": "cut_000.jpg",
+  "label": "cut",
+  "source": "MVTec AD test/cut/000.png"
+ },
+ {
+  "file": "hole_000.jpg",
+  "label": "hole",
+  "source": "MVTec AD test/hole/000.png"
+ }
+]
