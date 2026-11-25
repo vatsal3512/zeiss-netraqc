@@ -1,4 +1,37 @@
 {
  "rule": "max",
- "weak_type_picks": {}
+ "weak_type_picks": {
+  "screw": {
+   "size": 320,
+   "layers": "l2",
+   "coreset": 0.25,
+   "val_auroc": 0.5931,
+   "held_out_auroc": 0.822,
+   "bank_mb": 4.1
+  },
+  "capsule": {
+   "size": 320,
+   "layers": "l2",
+   "coreset": 0.1,
+   "val_auroc": 0.9674,
+   "held_out_auroc": 0.9062,
+   "bank_mb": 1.64
+  },
+  "pill": {
+   "size": 320,
+   "layers": "l2+l3",
+   "coreset": 0.25,
+   "val_auroc": 0.9118,
+   "held_out_auroc": 0.9041,
+   "bank_mb": 12.29
+  },
+  "zipper": {
+   "size": 320,
+   "layers": "l2",
+   "coreset": 0.1,
+   "val_auroc": 0.9461,
+   "held_out_auroc": 0.9498,
+   "bank_mb": 1.64
+  }
+ }
 }
