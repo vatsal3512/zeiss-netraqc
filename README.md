@@ -1,136 +1,158 @@
-# NetraQC demo: learns "good" from 20 parts, flags defects it has never seen
+# NetraQC
 
-PatchCore-style anomaly detection in plain PyTorch, sized for CPU and edge devices.
-No defect images are used anywhere: the model and the pass/fail threshold both come from good parts only.
+Surface-defect inspection that a small factory can set up from about 20 photos of good parts.
+It learns what a normal part looks like, flags anything that differs, and shows where with a heatmap.
+Runs offline on a CPU with a 2.9 MB INT8 model. Inspired by ZEISS SurfMax; a concept by Team Tensor-hive
+(IIT Kanpur) for the ZEISS India Hackathon, Beyond Code 2026, theme AI/ML for Advanced Frugal Innovation.
+Not a ZEISS product.
 
-## Run it (CPU is enough)
+![NetraQC Station](docs/screens/inspect_fail.png)
+
+## Run the station
 
 ```bash
 pip install -r requirements.txt
-python download_mvtec.py --category metal_nut --n-train 20 --out ../netraqc_data
-python netraqc_patchcore.py --data ../netraqc_data --category metal_nut --out results
+python app.py            # opens http://localhost:8000
 ```
 
-Outputs in `results/`:
+No dataset download, GPU or internet needed: 15 ready-made part types (from MVTec AD) and sample images ship
+in `station/`.
 
-| File | What it is |
-|---|---|
-| `results.json` | Headline metrics (see below) |
-| `scores.json` | Per-image anomaly score |
-| `frames/*.png` | Input + heatmap + PASS/FAIL frames, ready for the video |
-| `heat_*.png` | Heatmap overlays used on the slides |
-| `demo_clip.gif` | 8-second clip for the video: scratch, bent, stain (caught), one missed scratch, one good part |
-| `missed/` | Frames and heatmaps for every defect the detector missed |
-| `demo_reel.gif` | 15-frame reel cycling through scratch, bent, colour, flip and good parts |
+- **Set up**: pick a part type, or teach a new one from 5+ photos of good parts (20 is better).
+- **Inspect**: drop a photo or click a sample. You get the heatmap, score vs. threshold, PASS/FAIL and the time.
+  Samples have a known label, so the page also tells you when the call was right, a miss or a false alarm.
+- **Log**: every inspection goes into SQLite (`station/log.db`), with CSV export.
+- **Design**: why the model is this size and why the threshold is set this way.
 
-## Our runs (14–15 Oct 2026, laptop CPU, 4 threads)
+Tests: `python -m pytest tests -q`
 
-MVTec AD `metal_nut`, ResNet-18 backbone, trained on **20 good images, 0 defect images**:
+## How it works
 
-| Metric | Result |
-|---|---|
-| Image AUROC | **0.985** |
-| Pixel AUROC (heatmap localisation) | **0.981** |
-| AUROC by defect type | bent 1.00 · flip 1.00 · scratch 0.978 · colour 0.961 |
-| Defects caught at a threshold set from good parts only | **82 / 93 (88%)** |
-| False alarms on good parts | **0 / 22** |
-| Memory bank | 1,568 patches · **2.4 MB** |
-| Training time | 6.6 s |
-| Inference | **50–75 ms per image** across two runs (laptop CPU, 4 threads; Raspberry Pi 5 not yet measured) |
+1. **Set up (once per part type).** Pretrained ResNet-18 features (layer 2 and 3) of ~20 good photos, reduced to a
+   small memory of normal patches with greedy coreset sampling, as in PatchCore (Roth et al., CVPR 2022).
+2. **Threshold from good photos only.** Each good photo is scored against the memory with its own patches left
+   out; the threshold is a rule over those leave-one-out scores. No defect photo is used before testing.
+3. **Inspect.** Each patch of a new photo is compared with its nearest normal patch. The distances form the heatmap,
+   the highest one is the score.
+4. **Edge model.** The feature extractor is exported to ONNX and quantised to INT8 (`station/export_models.py`).
 
-Of the 11 missed defects, 9 scored within 0.17 of the threshold (2.32); the other two were 0.32 and 0.47 below it.
-The threshold is deliberately conservative: it is the highest score any training image got in leave-one-out, and it gave 0 / 22 false alarms on the test set.
-Lowering it trades false alarms for catches. Do not tune it on the test set.
+## Results
 
-## ML design optimiser (17 Oct 2026)
+All on public benchmarks, laptop CPU limited to 4 threads. Nothing here is measured on a Raspberry Pi or on real
+factory parts yet.
 
-```bash
-python design_optimizer.py --data ../netraqc_data --category metal_nut --out results/design   # ~40 min on a laptop CPU
-python design_search_eval.py      # search strategies vs. the full grid
-python plot_design_space.py       # results/design/design_space.png
-```
+### Design chosen by search (`design_optimizer.py`, `design_search_eval.py`)
 
-300 detector designs: backbone (ResNet-18, WideResNet-50) × input size (128–256) × feature depth (layer2, layer2+3)
-× memory size (coreset 1–25 %) × training images (5, 10, 20). Objectives: image AUROC, latency, footprint
-(backbone weights used + memory bank). The MVTec test set is split 56 validation / 59 held-out; designs are chosen
-on validation only.
+300 detector designs (backbone × input size × feature depth × memory size × number of good images), chosen on one
+half of the metal-nut test set, reported on the other half:
 
 | Design (held-out half) | AUROC | ms / image | Footprint |
 |---|---|---|---|
 | WideResNet-50, 256 px, layer2+3, 25 % memory | 0.992 | 362 | 131 MB |
-| Our default: ResNet-18, 224 px, layer2+3, 10 % memory | 0.992 | 67 | 13.5 MB |
-| Smallest within 0.01 of the best on validation: ResNet-18, 160 px, layer2, 5 % | 0.977 | 39 | 2.9 MB |
+| **ResNet-18, 224 px, layer2+3, 10 % memory (ours)** | **0.992** | **67** | **13.5 MB** |
+| Smallest within 0.01 of the best on validation | 0.977 | 39 | 2.9 MB |
 
-The 131 MB model buys no accuracy over the 13.5 MB default. Going below about 3 MB costs 0.015–0.025 AUROC
-(the same selection rule, run with the halves swapped, picked a 2.8 MB design that scored 0.966 on the other half).
+With 40 of the 300 evaluations, Bayesian search (Optuna TPE) reaches 98.8 % ± 0.5 of the best trade-off
+(hypervolume of testing all 300), against 96.0 % ± 3.6 for random search (20 seeds).
 
-Search efficiency, as a share of the best trade-off (hypervolume) that testing all 300 designs finds, 20 seeds:
+![design space](results/design/design_space.png)
 
-| Evaluations | Random | Optuna TPE (multivariate) | NSGA-II |
+### All 15 MVTec AD categories (`run_all_categories.py`)
+
+One fixed design, 20 good images per category, no per-category tuning: mean image AUROC **0.921**, mean pixel
+AUROC 0.962. 923 / 1,258 defective images caught, 53 / 467 good images flagged. Ten of 15 categories are at 0.95
+or above; the weakest are screw 0.565, grid 0.748, capsule 0.841, pill 0.881 and zipper 0.934.
+Per category: `results/all_categories/summary.json`.
+
+### INT8 (`edge_int8.py`)
+
+| Part | FP32 AUROC | INT8 AUROC | ms FP32 → INT8 |
 |---|---|---|---|
-| 20 | 0.924 ± 0.057 | 0.948 ± 0.057 | 0.876 ± 0.121 |
-| 40 | 0.960 ± 0.036 | **0.988 ± 0.005** | 0.931 ± 0.082 |
-| 60 | 0.974 ± 0.027 | **0.993 ± 0.005** | 0.953 ± 0.071 |
+| metal nut | 0.985 | 0.985 | 21.4 → 14.3 |
+| screw | 0.565 | 0.568 | 21.3 → 13.7 |
+| carpet | 0.976 | 0.972 | 22.3 → 15.0 |
+| capsule | 0.841 | 0.838 | 24.0 → 14.1 |
 
-This matters for the lighting search, where each evaluation is a physical set-up. Planned: capture each part once
-under each of the 8 LEDs in RAW; because light adds linearly, any LED combination (255) and exposure can be
-simulated from those captures and scored by the same optimiser, with parts cost and capture time as objectives.
+Model 11.1 MB → 2.9 MB, calibrated on good metal-nut images only.
 
-## Hackathon sprint, mid-point (8 Nov 2026)
+### Threshold rule (`threshold_study.py`)
 
-Everything below runs offline on a laptop CPU limited to 4 threads, to match a Raspberry Pi 5. No hardware was used.
+Six rules, each computed only from the 20 leave-one-out scores of the good images. Picked on the first half of
+every test set by the mean of miss rate and false-alarm rate; counts below are the held-out halves of all 15 categories.
+
+| Rule | Defects missed | Good flagged | Val. error |
+|---|---|---|---|
+| max (used) | 176 / 648 | 24 / 236 | 0.182 |
+| mean+2sd | 156 / 648 | 29 / 236 | 0.184 |
+| mean+3sd | 221 / 648 | 18 / 236 | 0.210 |
+| mean+4sd | 279 / 648 | 11 / 236 | 0.216 |
+| max*1.05 | 211 / 648 | 15 / 236 | 0.199 |
+| max*1.10 | 262 / 648 | 8 / 236 | 0.216 |
+
+The rule we already used (`max`) did best, so the station keeps it. Rules that miss fewer defects flag more good
+parts. The station's leave-one-out uses one shared coreset with each image's own patches removed (20× faster than
+re-sampling per image); the rule choice carries over.
+
+### Weak part types (`weak_types.py`)
+
+Per type: input 224/320 px × feature depth × memory 10/25 %, picked on the first half of the test set, reported on the
+held-out half. The station uses the pick only where it beat the default on the held-out half.
+
+| Part | Default | Picked | Design | Used |
+|---|---|---|---|---|
+| screw | 0.605 | 0.822 | 320 px, layer 2, 25 % | yes |
+| grid | 0.751 | 0.700 | 224 px, layer 2, 10 % | no, default kept |
+| capsule | 0.789 | 0.906 | 320 px, layer 2, 10 % | yes |
+| pill | 0.897 | 0.904 | 320 px, layers 2+3, 25 % | yes |
+| zipper | 0.936 | 0.950 | 320 px, layer 2, 10 % | yes |
+
+### Lighting (`eyecandies_lighting.py`)
+
+Eyecandies Lollipop (Bonfiglioli et al., ACCV 2022), cropped to the candy, 320 px, one detector per light:
+
+| Lighting | Image AUROC |
+|---|---|
+| One shot, all lights | 0.583 |
+| One shot, box light | 0.586 |
+| Each single directional light | 0.643–0.726 |
+| Four directional lights combined | **0.735** |
+
+Directional light reveals more than one evenly lit photo: an early signal for the LED dome, on 50 test
+samples (16 defective). The all-lights render cannot be rebuilt from the single-light renders
+(28–57 % error), so light combinations must come from linear RAW captures.
+Two more classes (Peppermint, Marshmallow) were started but ran out of memory and are not reported; `--auto-crop`
+is ready for them.
+
+## Reproduce
 
 ```bash
 for c in bottle cable capsule carpet grid hazelnut leather metal_nut pill screw tile toothbrush transistor wood zipper; do
   python download_mvtec.py --category $c --n-train 20 --out ../netraqc_data; done
-python run_all_categories.py --data ../netraqc_data --out results/all_categories            # step 5, ~45 min
-python edge_int8.py --data ../netraqc_data --categories metal_nut screw carpet capsule --out results/edge   # step 1
-python eyecandies_lighting.py --root ../eyecandies_data/Eyecandies/Lollipop --out results/eyecandies         # steps 2-4
+python netraqc_patchcore.py --data ../netraqc_data --category metal_nut --out results   # first demo, heatmaps
+python design_optimizer.py --data ../netraqc_data --category metal_nut --out results/design
+python design_search_eval.py && python plot_design_space.py
+python run_all_categories.py --data ../netraqc_data --out results/all_categories
+python threshold_study.py --data ../netraqc_data --out results/threshold
+python weak_types.py --data ../netraqc_data --out results/weak_types
+python edge_int8.py --data ../netraqc_data --categories metal_nut screw carpet capsule --out results/edge
+python eyecandies_lighting.py --root ../eyecandies_data/Eyecandies/Lollipop --out results/eyecandies_crop320 --size 320 --crop 100,480,30,480
+python -m station.export_models --data ../netraqc_data
+python -m station.build_banks --data ../netraqc_data
 ```
 
-**Step 5: all 15 MVTec AD categories, one fixed design, no per-category tuning.** Mean image AUROC 0.921, mean
-pixel AUROC 0.962; 923 / 1,258 defective images caught and 53 / 467 defect-free images flagged. Ten of 15 categories
-are at 0.95 or above. Weakest: screw 0.565, grid 0.748, capsule 0.841, pill 0.881, zipper 0.934, where defects are
-tiny or parts are rotated. The leave-one-out threshold is too tight for some textures: leather ranks perfectly
-(AUROC 1.000) but 15 / 32 good samples were flagged. Per-category numbers: `results/all_categories/summary.json`.
+## Layout
 
-**Step 1: INT8 for edge devices.** ONNX export, static INT8 quantisation with ONNX Runtime (QDQ, per-channel
-weights), calibrated on 20 defect-free metal-nut images only. Model 11.1 MB → 2.9 MB; 21–24 ms → 14–15 ms per image
-on 4 threads; image AUROC moved by at most 0.004 on metal nut, screw, carpet and capsule (bottle unchanged).
-`results/edge/edge_summary.json`.
-
-**Step 2: does light add up?** On Eyecandies (Lollipop), the all-lights render cannot be predicted from the four
-single-light renders: 28–57 % mean error in 8-bit or linearised sRGB, with or without per-light weights. Each render is
-tone-mapped separately, so light combinations cannot be simulated from these images. A real station must save linear
-RAW captures for that. `results/eyecandies/summary.json`.
-
-**Steps 3–4: one shot vs. several lights.** At 224 px on the full frame, the detector is close to chance on
-Eyecandies Lollipop (image AUROC 0.489–0.574 across all 63 combinations of the six shots). Cropped to the region the
-candy occupies (rows 100–480, columns 30–480) at 320 px (`--size 320 --crop 100,480,30,480`,
-`results/eyecandies_crop320/`):
-
-| Lighting | Image AUROC |
+| Path | What |
 |---|---|
-| One shot, all camera lights | 0.583 |
-| One shot, box lights | 0.586 |
-| Each single directional light | 0.643–0.726 |
-| All four directional lights (max rule, chosen in advance) | **0.735** |
-| Best of 63 combinations (cam3 + cam4, picked on the test set) | 0.756 |
+| `app.py`, `station/` | the station: engine, FastAPI server, page, models, part types, samples |
+| `netraqc_patchcore.py` | the original detector and demo frames |
+| `design_optimizer.py`, `design_search_eval.py`, `plot_design_space.py` | design search |
+| `run_all_categories.py`, `threshold_study.py`, `weak_types.py`, `edge_int8.py`, `eyecandies_lighting.py` | experiments |
+| `results/` | every number quoted in the deck |
+| `docs/` | decks (idea, mid-sprint, final) and screenshots |
 
-Directional light reveals more than a single evenly lit shot, which is NetraQC's lighting hypothesis. It is an early
-signal, not proof: 50 test samples (16 defective), the best subset is chosen on the same samples, and only 3 / 16
-defects are caught at the threshold.
+## Data and licences
 
-## Next steps
-
-- Run on the Raspberry Pi 5 and report real latency and power.
-- Export to ONNX / INT8 (OpenVINO or TFLite) and compare accuracy kept against FP32.
-- Add the photometric-stereo channels (surface normals from the LED ring) and test on PS-AD and MSDD.
-- Run the design optimiser on the lighting (LED subset, angles, exposure); the optical self-check.
-
-## Credits
-
-Dataset: MVTec AD (Bergmann et al., CVPR 2019), CC BY-NC-SA 4.0, fetched from a Hugging Face mirror.
-The licence forbids commercial use: we use MVTec AD only as a research benchmark. Any commercial version would be trained
-and validated on our own (or properly licensed) images.
-Method: PatchCore (Roth et al., CVPR 2022), re-implemented in minimal form.
+MVTec AD (Bergmann et al., CVPR 2019) is CC BY-NC-SA 4.0, non-commercial: the sample images and part types in
+`station/` come from it and are for research use. Eyecandies (Bonfiglioli et al., ACCV 2022) is used as a research
+benchmark; its images are not in this repo. A commercial version would be set up on the customer's own parts.
