@@ -120,10 +120,9 @@ async function loadDesign() {
       <td>${v.pick.size} px · ${depth(v.pick.layers)} · ${v.pick.coreset * 100}%</td></tr>`).join("")}</tbody></table>`;
   }
   if (d.threshold && d.threshold.rules) {
-    const r = d.threshold.rules[d.threshold.chosen_rule], m = d.threshold.rules.max;
-    html += `<h3>Threshold rule (held-out halves, all 15 types)</h3><table><thead><tr><th>Rule</th><th>Missed</th><th>False alarms</th></tr></thead><tbody>
-      <tr><td>max (before)</td><td>${m.held_out.missed}/${m.held_out.defective}</td><td>${m.held_out.false_alarms}/${m.held_out.good}</td></tr>
-      <tr><td><b>${d.threshold.chosen_rule} (now)</b></td><td>${r.held_out.missed}/${r.held_out.defective}</td><td>${r.held_out.false_alarms}/${r.held_out.good}</td></tr></tbody></table>`;
+    html += `<h3>Threshold rules tested (held-out halves, all 15 types)</h3><table><thead><tr><th>Rule</th><th>Missed</th><th>False alarms</th></tr></thead><tbody>
+    ${Object.entries(d.threshold.rules).map(([n, v]) => `<tr><td>${n === d.threshold.chosen_rule ? `<b>${n} (used)</b>` : n}</td>
+      <td>${v.held_out.missed}/${v.held_out.defective}</td><td>${v.held_out.false_alarms}/${v.held_out.good}</td></tr>`).join("")}</tbody></table>`;
   }
   $("#designBody").innerHTML = html + `</div></div>`;
 }
