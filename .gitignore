@@ -1,4 +1,7 @@
 __pycache__/
 *.pyc
 *.onnx
+!station/models/*.onnx
 results/edge_test/
+station/log.db
+.pytest_cache/
