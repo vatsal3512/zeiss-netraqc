@@ -1,4 +1,5 @@
 const $ = (s) => document.querySelector(s);
+const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 let types = [], active = null;
 
 document.querySelectorAll("nav button").forEach((b) => (b.onclick = () => show(b.dataset.tab)));
@@ -14,7 +15,7 @@ const depth = (l) => (l === "l2" ? "layer 2" : "layers 2+3");
 async function loadTypes(select) {
   types = await (await fetch("/api/types")).json();
   $("#types").innerHTML = types.map((t) =>
-    `<button class="type" data-id="${t.id}"><b>${t.name}</b><small>${t.size} px · ${depth(t.layers)} · ${t.n_train} good images</small></button>`).join("");
+    `<button class="type" data-id="${t.id}"><b>${esc(t.name)}</b><small>${t.size} px · ${depth(t.layers)} · ${t.n_train} good images</small></button>`).join("");
   document.querySelectorAll(".type").forEach((b) => (b.onclick = () => { pick(b.dataset.id); show("inspect"); }));
   pick(select || (active && active.id) || types[0].id);
 }
@@ -40,7 +41,7 @@ async function inspect(file, label = "") {
   fd.append("type", active.id); fd.append("image", file); fd.append("label", label);
   const res = await fetch("/api/inspect", { method: "POST", body: fd });
   const r = await res.json();
-  if (!res.ok) { $("#result").innerHTML = `<div class="empty">${r.detail}</div>`; return; }
+  if (!res.ok) { $("#result").innerHTML = `<div class="empty">${esc(r.detail)}</div>`; return; }
   const src = URL.createObjectURL(file);
   const pct = Math.min(100, (r.score / (r.threshold * 1.6)) * 100), mark = (1 / 1.6) * 100;
   let truth = "";
@@ -56,7 +57,7 @@ async function inspect(file, label = "") {
       <div><img src="${r.overlay}" alt="heatmap"><small>Heatmap: red = most unlike the good parts</small></div></div>
     <div class="bar"><i style="width:${pct}%;background:${r.verdict === "FAIL" ? "var(--red)" : "var(--green)"}"></i><s style="left:${mark}%"></s></div>
     <div class="nums"><span>Score <b>${r.score.toFixed(2)}</b></span><span>Threshold <b>${r.threshold.toFixed(2)}</b></span>
-      <span>Time <b>${r.ms.toFixed(0)} ms</b></span><span>Part <b>${active.name}</b></span></div>${truth}`;
+      <span>Time <b>${r.ms.toFixed(0)} ms</b></span><span>Part <b>${esc(active.name)}</b></span></div>${truth}`;
 }
 
 const drop = $("#drop");
@@ -86,9 +87,9 @@ $("#teachBtn").onclick = async () => {
 async function loadLog() {
   const { rows, counts } = await (await fetch("/api/log")).json();
   $("#counts").innerHTML = `<div><b>${counts.total}</b>inspected</div><div><b>${counts.pass}</b>passed</div><div><b>${counts.fail}</b>failed</div>`;
-  $("#logRows").innerHTML = rows.map((r) => `<tr><td>${r.time.replace("T", " ")}</td><td>${r.type}</td><td>${r.file || ""}</td>
+  $("#logRows").innerHTML = rows.map((r) => `<tr><td>${r.time.replace("T", " ")}</td><td>${esc(r.type)}</td><td>${esc(r.file)}</td>
     <td>${r.score.toFixed(2)}</td><td>${r.threshold.toFixed(2)}</td><td class="${r.verdict}">${r.verdict}</td><td>${r.ms.toFixed(0)}</td>
-    <td>${(r.label || "").replace(/_/g, " ")}</td></tr>`).join("");
+    <td>${esc((r.label || "").replace(/_/g, " "))}</td></tr>`).join("");
 }
 
 const f3 = (v) => Number(v).toFixed(3);
@@ -111,7 +112,7 @@ async function loadDesign() {
     <p class="note">Laptop CPU, 4 threads. Not yet measured on a Raspberry Pi.</p></div>
   <div class="panel"><h2>Settings per part type</h2>
     <table><thead><tr><th>Part</th><th>Input</th><th>Features</th><th>Threshold rule</th><th>Memory</th></tr></thead><tbody>
-    ${d.types.map((t) => `<tr><td>${t.name}</td><td>${t.size} px</td><td>${depth(t.layers)}</td><td>${t.rule}</td><td>${t.bank_mb} MB</td></tr>`).join("")}
+    ${d.types.map((t) => `<tr><td>${esc(t.name)}</td><td>${t.size} px</td><td>${depth(t.layers)}</td><td>${t.rule}</td><td>${t.bank_mb} MB</td></tr>`).join("")}
     </tbody></table>`;
   if (d.weak_types) {
     html += `<h3>Weak types: design search per type (held-out AUROC)</h3><table><thead><tr><th>Part</th><th>Default</th><th>Best found</th><th>Design</th></tr></thead><tbody>

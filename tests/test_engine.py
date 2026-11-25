@@ -58,3 +58,12 @@ def test_teach_builds_new_type(tmp_path):
     t = st.teach("My bottle", imgs)
     assert t["id"] in [x["id"] for x in st.types()] and t["n_train"] == 6 and t["seconds"] > 0
     assert st.inspect(base, t["id"])["verdict"] in ("PASS", "FAIL")
+
+
+def test_teach_does_not_overwrite_existing_type(tmp_path):
+    st = Station(banks_dir=tmp_path)
+    base = sample("bottle")
+    imgs = [base, ImageOps.mirror(base), ImageOps.flip(base), base.rotate(90), base.rotate(180)]
+    first = st.teach("Bottle", imgs)
+    second = st.teach("Bottle", imgs)
+    assert first["id"] != second["id"] and len(st.types()) == 2

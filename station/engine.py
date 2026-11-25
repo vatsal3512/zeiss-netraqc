@@ -148,6 +148,9 @@ class Station:
             raise ValueError("need at least 5 good images")
         t0 = time.perf_counter()
         type_id = re.sub(r"[^a-z0-9]+", "_", name.strip().lower()).strip("_") or "part"
+        base, n = type_id, 2
+        while type_id in self.banks:  # never overwrite an existing part type
+            type_id, n = f"{base}_{n}", n + 1
         self.save(type_id, name.strip() or type_id, self.build(images, rule=rule))
         return {"id": type_id, "threshold": round(self.banks[type_id]["threshold"], 3), "n_train": len(images),
                 "seconds": round(time.perf_counter() - t0, 1)}
