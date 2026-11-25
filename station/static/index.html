@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NetraQC Station</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="brand">NetraQC <span>Station</span></div>
+  <div class="meta">Offline · INT8 model · 4 CPU threads</div>
+  <nav>
+    <button data-tab="setup" class="on">Set up</button>
+    <button data-tab="inspect">Inspect</button>
+    <button data-tab="log">Log</button>
+    <button data-tab="design">Design</button>
+  </nav>
+</header>
+
+<main>
+  <section id="setup" class="tab on">
+    <div class="grid2">
+      <div class="panel">
+        <h2>Part types</h2>
+        <p class="hint">Each type was set up from 20 defect-free images. Pick one to inspect.</p>
+        <div id="types" class="types"></div>
+      </div>
+      <div class="panel">
+        <h2>Teach a new part</h2>
+        <p class="hint">Give it at least 5 photos of good parts (20 is better). No defect photos needed.</p>
+        <label class="field">Part name <input id="teachName" placeholder="e.g. Brass washer"></label>
+        <label class="drop small" id="teachDrop">
+          <input type="file" id="teachFiles" accept="image/*" multiple hidden>
+          <span id="teachCount">Choose good images</span>
+        </label>
+        <button id="teachBtn" class="primary">Set up this part</button>
+        <p id="teachMsg" class="hint"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="inspect" class="tab">
+    <div class="grid2">
+      <div class="panel">
+        <h2>Inspect <span id="activeName" class="tag"></span></h2>
+        <label class="drop" id="drop">
+          <input type="file" id="file" accept="image/*" hidden>
+          <span>Drop a part image here, or click to choose</span>
+        </label>
+        <h3>Or try a sample</h3>
+        <div id="samples" class="samples"></div>
+      </div>
+      <div class="panel result" id="result">
+        <div class="empty">The heatmap and verdict appear here.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="log" class="tab">
+    <div class="panel">
+      <div class="row"><h2>Inspection log</h2><a class="btn" href="/api/log.csv">Download CSV</a></div>
+      <div id="counts" class="counts"></div>
+      <table><thead><tr><th>Time</th><th>Part</th><th>File</th><th>Score</th><th>Threshold</th><th>Verdict</th><th>ms</th><th>Known label</th></tr></thead>
+        <tbody id="logRows"></tbody></table>
+    </div>
+  </section>
+
+  <section id="design" class="tab">
+    <div id="designBody"></div>
+  </section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>
